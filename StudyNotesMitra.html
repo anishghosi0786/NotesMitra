@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes Mitra - Sell Your Study Notes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background: #f2f2f2;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    label {
+      margin-top: 15px;
+      display: block;
+      font-weight: bold;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      margin-top: 20px;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .preview {
+      margin-top: 15px;
+      background: #eaeaea;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>📘 Notes Mitra - Upload Your Notes</h2>
+
+    <label for="title">Title</label>
+    <input type="text" id="title" placeholder="Enter note title">
+
+    <label for="subject">Subject</label>
+    <input type="text" id="subject" placeholder="e.g., Mathematics, History">
+
+    <label for="description">Description</label>
+    <textarea id="description" rows="4" placeholder="Brief description of your notes..."></textarea>
+
+    <label for="file">Upload File (PDF, DOC, etc.)</label>
+    <input type="file" id="file">
+
+    <button onclick="submitForm()">Submit Note</button>
+
+    <div class="preview" id="preview" style="display:none;">
+      <h3>📋 Preview</h3>
+      <p><strong>Title:</strong> <span id="previewTitle"></span></p>
+      <p><strong>Subject:</strong> <span id="previewSubject"></span></p>
+      <p><strong>Description:</strong> <span id="previewDescription"></span></p>
+      <p><strong>File:</strong> <span id="previewFile"></span></p>
+    </div>
+  </div>
+
+  <script>
+    function submitForm() {
+      const title = document.getElementById('title').value;
+      const subject = document.getElementById('subject').value;
+      const description = document.getElementById('description').value;
+      const fileInput = document.getElementById('file');
+      const file = fileInput.files[0];
+
+      if (!title || !subject || !description || !file) {
+        alert('Please fill out all fields and upload a file.');
+        return;
+      }
+
+      document.getElementById('previewTitle').textContent = title;
+      document.getElementById('previewSubject').textContent = subject;
+      document.getElementById('previewDescription').textContent = description;
+      document.getElementById('previewFile').textContent = file.name;
+      document.getElementById('preview').style.display = 'block';
+
+      // TODO: Connect with backend like Firebase or Node.js to actually store file and data
+      alert("Note submitted successfully! (This is a frontend demo)");
+    }
+  </script>
+
+</body>
+</html>
